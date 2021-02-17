@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Blog Posts</h1>
+<ul>
+    {% for post in object_list %}
+    <li><a href="{% url 'post_detail' post.pk %}">{{ post.title }} </a> </br>
+        {{ post.author }} </br>
+        {{ post.content|slice:":50"|safe }} </br>
+        <small> <a href="{% url 'category' post.category %}"</a>{{ post.category }} </small> </br>
+        {% if user.is_authenticated %}
+        <small> <a href="{% url 'update_post' post.pk %}">Edit</a> </small>
+        <small> <a href="{% url 'delete_post' post.pk %}">Delete</a> </small>
+        {% endif %}
+    </li>
+{% endfor %}
+</ul>
+{% endblock %}
+

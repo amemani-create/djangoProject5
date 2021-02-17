@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}
+    Post-Delete
+{% endblock %}
+{% block content %}
+<h1>Delete Post</h1>
+    {% if user.is_authenticated %}
+    <h3>Delete: {{ post.title }}</h3>
+<div class ="form-group">
+    <table>
+        <button class="btn btn-secondary">Delete</button>
+
+
+    </table>
+    </div>
+<hr>
+<br/>
+        {% else %}
+        You must Register to Update a Post!
+    {% endif %}
+<a href="{% url 'post_list' %}">Back</a>
+{% endblock %}
